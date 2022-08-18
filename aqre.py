@@ -1,4 +1,4 @@
-from z3 import Int, And, Not, Or, Solver, is_true, If
+from z3 import Int, And, If, Not, Or, Solver, is_true
 from lib import set_problem, parse_regions, parse_clues, at, connected, eq, \
 get_rtable, in_bounds, inds, plus, shaded_vars, times
 import time
@@ -32,7 +32,6 @@ clues = parse_clues('''
 ...............3..
 ..................
 ''', regions)
-
 
 
 rtable = get_rtable(regions)
