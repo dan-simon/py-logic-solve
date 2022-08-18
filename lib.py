@@ -82,8 +82,10 @@ def at(x, i):
     return x[i[0]][i[1]]
 
 def only(x):
+    if type(x) in (list, tuple):
+        x = set(x)
     assert len(x) == 1
-    return x[0]
+    return list(x)[0]
 
 # Some generally useful python list fuctions
 def windows(l, n):
