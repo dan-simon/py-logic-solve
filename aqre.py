@@ -1,4 +1,4 @@
-from z3 import Int, And, Not, Or, PbEq, Solver, is_true, If, Sum
+from z3 import Int, And, Not, Or, Solver, is_true, If
 from lib import set_problem, parse_regions, parse_clues, at, connected, eq, \
 get_rtable, in_bounds, inds, plus, shaded_vars, times
 import time
