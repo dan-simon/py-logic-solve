@@ -154,9 +154,9 @@ def read_model(m, x):
 # the values to python values, not z3 values.
 def read_model_raw(m, x):
     if type(x) == dict:
-        return {i: read_model(m, x[i]) for i in x}
+        return {i: read_model_raw(m, x[i]) for i in x}
     elif type(x) in (list, tuple):
-        return type(x)(read_model(m, i) for i in x)
+        return type(x)(read_model_raw(m, i) for i in x)
     elif type(x) == BoolRef:
         return is_true(m[x])
     elif type(x) == ArithRef:
