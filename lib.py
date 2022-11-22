@@ -310,7 +310,7 @@ def connected(rv, included, base, cs, **kwargs):
     included(j), eq(at(rv, i), at(rv, j)), at(dist, i) < at(dist, j)
     ) for j in neighbors(i, diag)])) for i in inds()]
     if rect:
-        cons += rectangular_regions(rv, cs + 'r', included)
+        cons += rectangular_regions(rv, included)
     return cons, dist
 
 # Do two z3 region grids agree about which regions everything is in, except for naming of course?
@@ -403,7 +403,7 @@ def all_2x2(f):
     return [f(*near(i)) for i in inds() if all(in_bounds(j) for j in near(i))]
 
 # Checks whether a region is rectangular.
-def rectangular_regions(rv, cs, included=lambda _: True):
+def rectangular_regions(rv, included=lambda _: True):
     return all_2x2(lambda *a: And(
     Implies(And(included(a[0]), included(a[3]), eq(at(rv, a[0]), at(rv, a[3]))), And(eq(at(rv, a[0]), at(rv, a[1])), eq(at(rv, a[0]), at(rv, a[2])))),
     Implies(And(included(a[1]), included(a[2]), eq(at(rv, a[1]), at(rv, a[2]))), And(eq(at(rv, a[1]), at(rv, a[0])), eq(at(rv, a[1]), at(rv, a[3]))))))
