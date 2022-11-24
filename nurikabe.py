@@ -55,6 +55,9 @@ cons += [Or(at(shaded, i), *[at(rs, i) == ind for (ind, j) in enumerate(clues) i
 # Clues cannot be shaded
 cons += [Not(at(shaded, i)) for i in clues]
 
+# Clues must be part of their regions
+cons += [at(rs, i) == ind for (ind, i) in enumerate(clues)]
+
 # Adjacent unshaded neighbors must be in same region
 cons += all_neighbors(lambda x, y: Or(at(shaded, x), at(shaded, y), eq(at(rs, x), at(rs, y))))
 

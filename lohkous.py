@@ -51,7 +51,7 @@ cons += connected(rs, (lambda _: True), (lambda x: at(rs, x) == clues.index(x) i
 # There are no regions with a number higher than the number of clues
 cons += [And(0 <= at(rs, i), at(rs, i) < len(clues)) for i in inds()]
 
-# clues must be part of their regions
+# Clues must be part of their regions
 cons += [at(rs, i) == ind for (ind, i) in enumerate(clues)]
 
 # Form all line segments in the grid
