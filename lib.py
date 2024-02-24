@@ -329,6 +329,9 @@ def same_regions(r1, r2):
 # However, this follows from other constraints there so is redundant and slows things down.
 # This function is generally slower than other options. I've sped up islands and nurikabe
 # by replacing it by a sum.
+# Also, it's important to note that if there's no region number specification,
+# and some cells don't belong to regions, then the cells not in regions
+# can have the same region numbers as cells in regions.
 def get_sizes(included, base, nonbase, cs, same_size=True):
     rv = construct_vars(Int, cs + 'r', (height, width))
     dist = construct_vars(Int, cs + 'd', (height, width))
